@@ -1,0 +1,10 @@
+# Ignores Node.js modules
+node_modules
+
+# Ignores logs
+logs
+*.log
+npm-debug.log.*
+
+# Distribution files
+dist
