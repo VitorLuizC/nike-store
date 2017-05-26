@@ -1,11 +1,10 @@
 const path = require('path')
-const webpack = require('webpack')
-const { DefinePlugin } = webpack
+const getPlugins = require('./getPlugins')
 
 /**
  * Returns webpack configuration object for both 'production' and 'development' 
  * environments.
- * @param {String} env
+ * @param {('development'|'production')} env
  * @returns {webpack.Configuration}
  */
 function getWebpackConfiguration(env) {
@@ -49,13 +48,7 @@ function getWebpackConfiguration(env) {
         }
       ]
     },
-    plugins: isProd ? [
-      new DefinePlugin({
-        'process.env': {
-          NODE_ENV: '"production"'
-        }
-      })
-    ] : []
+    plugins: getPlugins(env)
   }
 
   return configuration
