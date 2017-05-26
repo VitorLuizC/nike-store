@@ -32,6 +32,20 @@ function getWebpackConfiguration(env) {
               sourceMap: true
             }
           }
+        },
+        {
+          test: /\.png$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: './img/',
+                useRelativePath: !isProd
+              }
+            },
+            'image-webpack-loader'
+          ]
         }
       ]
     },
