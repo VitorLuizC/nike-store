@@ -1,12 +1,12 @@
 <template>
-  <header-block></header-block>
+  <app-header />
 </template>
 
 <script>
-  import HeaderBlock from './HeaderBlock'
+  import AppHeader from './AppHeader'
 
   export default {
-    components: { HeaderBlock },
+    components: { AppHeader },
     data: () => ({
       text: 'Hello world!'
     })

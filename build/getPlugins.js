@@ -1,6 +1,8 @@
 const path = require('path')
-const { DefinePlugin } = require('webpack')
 const HtmlPlugin = require('html-webpack-plugin')
+const { DefinePlugin, optimize } = require('webpack')
+const { UglifyJsPlugin, CommonsChunkPlugin } = optimize
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 /**
  * Returns webpack plugins for both 'development' and 'distribution'
@@ -11,21 +13,24 @@ const HtmlPlugin = require('html-webpack-plugin')
 function getPlugins(env) {
   const isProd = env === 'production'
 
+  const htmlMinifierConfig = {
+    html5: true,
+    removeComments: true,
+    keepClosingSlash: false,
+    collapseWhitespace: true,
+    removeAttributeQuotes: true,
+    collapseBooleanAttributes: true,
+    removeRedundantAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true
+  }
+
   const plugins = [
+    new ExtractTextPlugin('css/style.css'),
     new HtmlPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '../src/index.html'),
-      minify: !isProd ? false : {
-        html5: true,
-        removeComments: true,
-        keepClosingSlash: false,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        collapseBooleanAttributes: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true
-      }
+      minify: !isProd ? false : htmlMinifierConfig
     })
   ]
 
@@ -35,7 +40,8 @@ function getPlugins(env) {
         'process.env': {
           NODE_ENV: '"production"'
         }
-      })
+      }),
+      new UglifyJsPlugin()
     ])
   }
 

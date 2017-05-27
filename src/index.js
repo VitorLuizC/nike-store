@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import Main from './components/Main'
+import App from './components/App'
 
 new Vue({
   el: '#app',
-  render: renderize => renderize(Main)
+  render: renderize => renderize(App)
 })

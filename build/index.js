@@ -1,5 +1,6 @@
 const path = require('path')
 const getPlugins = require('./getPlugins')
+const getLoaders = require('./getLoaders')
 
 /**
  * Returns webpack configuration object for both 'production' and 'development' 
@@ -22,32 +23,9 @@ function getWebpackConfiguration(env) {
       extensions: ['.js', '.json', '.vue']
     },
     module: {
-      rules: [
-        {
-          test: /\.vue$/,
-          use: isProd ? 'vue-loader' : {
-            loader: 'vue-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        },
-        {
-          test: /\.png$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[ext]',
-                outputPath: './img/',
-                useRelativePath: !isProd
-              }
-            },
-            'image-webpack-loader'
-          ]
-        }
-      ]
+      rules: getLoaders(env)
     },
+    devtool: !isProd ? 'source-map' : false,
     plugins: getPlugins(env)
   }
 
