@@ -6,9 +6,6 @@
   import AppHeader from './AppHeader'
 
   export default {
-    components: { AppHeader },
-    data: () => ({
-      text: 'Hello world!'
-    })
+    components: { AppHeader }
   }
 </script>

@@ -1,0 +1,6 @@
+export const CART_ITEMS = 'cart/CART_ITEMS'
+export const CART_COUNT = 'cart/CART_COUNT'
+export const CART_CHANGE = 'cart/CART_CHANGE'
+export const CART_INCLUDE = 'cart/CART_INCLUDE'
+export const CART_EXCLUDE = 'cart/CART_EXCLUDE'
+export const CART_CHANGE_QUANTITY = 'cart/CART_CHANGE_QUANTITY'
