@@ -30,25 +30,24 @@ export const actions = {
       const response = await fetch(url)
       const shelfs = await response.json()
 
-      const mapBoots = (shelf, boot) => ({
+      const mapShelfBoots = shelf => boot => ({
         shelf,
-        name: product.title,
-        image: product.image,
-        highTop: product['high-top'],
-        category: product.category === 'society' ? 'indor soccer' : 'soccer',
-        installments: product.installments
+        name: boot.title,
+        image: boot.image,
+        highTop: boot['high-top'],
+        category: boot.category === 'society' ? 'indor soccer' : 'soccer',
+        installments: boot.installments
       })
 
       const getBoots = shelfs => {
         const boots = Object.keys(shelfs).reduce((boots, shelf) => {
-          return boots.concat(shelfs[shelf].map(mapBoots))
+          return boots.concat(shelfs[shelf].map(mapShelfBoots(shelf)))
         }, [])
 
         return boots
       }
 
       commit(types.BOOTS_CHANGE, getBoots(shelfs))
-      return true
     } catch (error) {
       return new Error('Erro ao carregar as chuteiras.')
     }
