@@ -1,47 +1,21 @@
 <template>
   <div class="shop-cart">
-    <figure class="cart-icon">
-      <img
-        class="image"
-        src="~../assets/images/cart.png"
-        :alt="text"
-        :title="text" />
-      <span v-if="count > 0" class="counter">{{ count }}</span>
-    </figure>
+    <cart-icon :count="count" />
+    <cart-modal :count="count" :items="items"></cart-modal>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
   import * as types from '../store/types'
+  import CartIcon from './CartIcon'
+  import CartModal from './CartModal'
 
   export default {
-    computed: {
-      ...mapGetters({
-        items: types.CART_ITEMS,
-        count: types.CART_COUNT
-      }),
-      text() {
-        if (this.count > 0) {
-          const word = this.count > 1 ? 'items' : 'item'
-          return `${this.count} ${word} no carrinho de compras`
-        }
-        return 'Carrinho de compras vazio'
-      }
-    }
+    components: { CartIcon, CartModal },
+    computed: mapGetters({
+      count: types.CART_COUNT,
+      items: types.CART_ITEMS
+    })
   }
 </script>
-
-<style lang="stylus">
-  .cart-icon
-    position: relative
-
-    & > .counter
-      position: absolute
-      bottom: 0
-      right: 0
-      display: block
-      color: #fff
-      border-radius: 50%
-      background-color: #ff5f2f
-</style>
