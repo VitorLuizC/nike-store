@@ -1,5 +1,6 @@
 <template>
   <p>{{ boots }}</p>
+
 </template>
 
 <script>
@@ -10,8 +11,12 @@
     computed: mapGetters({
       boots: types.BOOTS
     }),
-    created() {
-      this.$store.dispatch(types.BOOTS_LOAD)
+    data: () => ({ error: null }),
+    async created() {
+      const status = await this.$store.dispatch(types.BOOTS_LOAD)
+
+      if (status instanceof Error)
+        this.error = status.message
     }
   }
 </script>
