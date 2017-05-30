@@ -23,14 +23,14 @@ export const mutations = {
 
 const findIndexByProduct = (items, product) => {
   return items.findIndex(item => {
-    return item.product && item.product.id === product.id
+    return item.product && item.product.name === product.name
   })
 }
 
 export const actions = {
   [types.CART_INCLUDE]({ getters, commit }, payload) {
     const items = getters[types.CART_ITEMS]
-    const index = findIndexByProduct(items, product)
+    const index = findIndexByProduct(items, payload)
 
     if (index >= 0) {
       items[index].quantity++

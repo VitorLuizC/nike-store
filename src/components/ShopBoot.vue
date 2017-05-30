@@ -12,12 +12,14 @@
       <p class="type">{{ boot.highTop ? 'Cano Alto' : 'Cano Baixo' }}</p>
       <h5 class="price">R$ {{ boot.price | money }}</h5>
       <h6 class="installments">ou {{ boot.installments.times }}X {{ boot.installments.price }} sem juros</h6>
-      <button-filled v-if="" @click.native="buy(boot)" text="Comprar" />
+      <button-filled @click.native="buy(boot)" text="Comprar" />
     </div>
   </div>
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+  import * as types from '../store/types'
   import ButtonFilled from './ButtonFilled'
 
   export default {
@@ -32,6 +34,7 @@
       money(value) {
         return +(value).toFixed(2).toString().replace('.', ',')
       }
-    }
+    },
+    methods: mapActions({ buy: types.CART_INCLUDE })
   }
 </script>
