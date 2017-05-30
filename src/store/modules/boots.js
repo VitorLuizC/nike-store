@@ -9,10 +9,10 @@ export const getters = {
     return state.boots
   },
   [types.BOOTS_BEST_SELLERS](state) {
-    return state.boots.map(boot => boot.shelf === 'best-sellers')
+    return state.boots.filter(boot => boot.shelf === 'best-sellers')
   },
   [types.BOOTS_RELEASES](state) {
-    return state.boots.map(boot => boot.shelf === 'releases')
+    return state.boots.filter(boot => boot.shelf === 'releases')
   }
 }
 
@@ -36,7 +36,8 @@ export const actions = {
         image: boot.image,
         highTop: boot['high-top'],
         category: boot.category === 'society' ? 'indor soccer' : 'soccer',
-        installments: boot.installments
+        installments: boot.installments,
+        price: boot.price
       })
 
       const getBoots = shelfs => {

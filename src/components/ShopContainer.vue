@@ -1,15 +1,20 @@
 <template>
-  <p>{{ boots }}</p>
-
+  <main>
+    <shop-shelf title="Lançamentos" :boots="releases"></shop-shelf>
+    <shop-shelf title="Mais Vendidos" :boots="bestSellers"></shop-shelf>
+  </main>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
   import * as types from '../store/types'
+  import ShopShelf from './ShopShelf'
 
   export default {
+    components: { ShopShelf },
     computed: mapGetters({
-      boots: types.BOOTS
+      releases: types.BOOTS_RELEASES,
+      bestSellers: types.BOOTS_BEST_SELLERS
     }),
     data: () => ({ error: null }),
     async created() {
@@ -20,4 +25,3 @@
     }
   }
 </script>
-
