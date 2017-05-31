@@ -1,7 +1,8 @@
 import * as types from '../types'
 
 export const state = {
-  boots: []
+  boots: [],
+  filtred: []
 }
 
 export const getters = {
@@ -9,16 +10,20 @@ export const getters = {
     return state.boots
   },
   [types.BOOTS_BEST_SELLERS](state) {
-    return state.boots.filter(boot => boot.shelf === 'best-sellers')
+    return state.filtred.filter(boot => boot.shelf === 'best-sellers')
   },
   [types.BOOTS_RELEASES](state) {
-    return state.boots.filter(boot => boot.shelf === 'releases')
+    return state.filtred.filter(boot => boot.shelf === 'releases')
   }
 }
 
 export const mutations = {
   [types.BOOTS_CHANGE](state, payload) {
     state.boots = payload
+    state.filtred = payload
+  },
+  [types.BOOTS_FILTRED_CHANGE](state, payload) {
+    state.filtred = payload
   }
 }
 
@@ -52,5 +57,17 @@ export const actions = {
     } catch (error) {
       return new Error('Erro ao carregar as chuteiras.')
     }
+  },
+  [types.BOOTS_FILTER]({ commit, getters }, payload) {
+    const boots = getters[types.BOOTS]
+
+    commit(BOOTS_FILTRED_CHANGE, boots.filter(boot => {
+      if (!Array.isArray(payload) || payload.length === 0)
+        return true;
+
+      Object.keys(payload).every(key => {
+        boot[key] === payload[key]
+      })
+    }))
   }
 }

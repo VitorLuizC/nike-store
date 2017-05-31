@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <app-header />
-    <app-banner />
+    <app-banner background="#ff5e2d" />
     <shop-container />
     <app-footer />
   </div>

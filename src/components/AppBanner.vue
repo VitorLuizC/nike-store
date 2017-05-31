@@ -1,5 +1,9 @@
 <template>
-  <parallax :speedFactor=".35" sectionClass="app-banner" containerClass="banner-container">
+  <parallax
+    :speedFactor=".35"
+    sectionClass="app-banner"
+    containerClass="banner-container"
+    :style="{ 'background-color': background }">
     <img class="image" src="~../assets/images/banner.png" alt="Finish it!" title="Nike: Finish it!" />
   </parallax>
 </template>
@@ -8,7 +12,13 @@
   import Parallax from 'vue-parallaxy'
 
   export default {
-    components: { Parallax }
+    components: { Parallax },
+    props: {
+      background: {
+        type: String,
+        default: null
+      }
+    }
   }
 </script>
 
@@ -21,7 +31,7 @@
     width: 100%
     min-height: 551px
     max-height: @min-height
-    background-color: #ff5e2d
+    //background-color: #ff5e2d
     scroll-behavior: smooth
 
   .banner-container
