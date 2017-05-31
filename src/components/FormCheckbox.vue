@@ -1,12 +1,14 @@
 <template>
   <div class="form-checkbox">
     <input v-model="checked" :id="id" class="input" type="checkbox">
-    <label :for="id" class="checkbox" />
-    <p>{{ text }}</p>
+    <label :for="id" class="checkbox" :class="{ 'active': checked }"  />
+    <p class="text">{{ text }}</p>
   </div>
 </template>
 
 <script>
+  import uuid from 'uuid/v1'
+
   export default {
     props: {
       checked: {
@@ -20,7 +22,7 @@
     },
     computed: {
       id() {
-        return `checkbox-${Date.now()}`
+        return `checkbox-${uuid()}`
       }
     }
   }
@@ -28,5 +30,32 @@
 
 <style lang="stylus">
   .form-checkbox
-    display: block
+    display: flex
+
+    & > .input
+      display: none
+
+    & > .text
+      margin-top: 0
+      margin-left: 10px
+      margin-bottom: 3px
+      font-size: 16px
+      font-weight: 600
+      color: #999
+
+    & > .checkbox
+      box-sizing: border-box
+      display: block
+      width: 19px
+      height: @width
+      padding: 3px
+      border: 1px solid #ccc
+      transition:
+        background-color .5s,
+        border-color .5s
+
+      &.active
+        border-color: #000
+        background-color: #000
+        background-clip: content-box
 </style>

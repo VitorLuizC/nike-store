@@ -1,8 +1,8 @@
 <template>
-  <main>
-    <shop-filter></shop-filter>
-    <shop-shelf title="Mais Vendidos" :boots="bestSellers"></shop-shelf>
-    <shop-shelf title="Lançamentos" :boots="releases"></shop-shelf>
+  <main class="shop-container">
+    <shop-filter class="filter"></shop-filter>
+    <shop-shelf class="shelf" title="Mais vendidos" :boots="bestSellers"></shop-shelf>
+    <shop-shelf class="shelf" title="Lançamentos" :boots="releases"></shop-shelf>
   </main>
 </template>
 
@@ -27,3 +27,14 @@
     }
   }
 </script>
+
+<style lang="stylus">
+  .shop-container
+    & > .filter
+      margin-top: 35px
+
+    & > .filter
+    & > .shelf
+      margin-bottom: 80px
+</style>
+
