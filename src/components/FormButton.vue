@@ -1,5 +1,5 @@
 <template>
-  <button class="button-filled" :class="{ 'active': primary }">
+  <button class="form-button" :class="{ 'active': primary }">
     {{ text }}
   </button>
 </template>
@@ -20,7 +20,7 @@
 </script>
 
 <style lang="stylus">
-  .button-filled
+  .form-button
     display: flex
     align-items: center
     justify-content: center

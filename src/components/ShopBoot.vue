@@ -12,7 +12,14 @@
       <p class="type">{{ boot.highTop ? 'Cano Alto' : 'Cano Baixo' }}</p>
       <h5 class="price">R$ {{ boot.price | real }}</h5>
       <h6 class="installments">ou {{ boot.installments.number }}X {{ boot.installments.value | real }} sem juros</h6>
-      <button-filled v-if="active" class="boot-button" @click.native="buy(boot)" text="Comprar" primary />
+      <transition name="fade">
+        <form-button
+          v-if="active"
+          @click.native="buy(boot)"
+          class="boot-button"
+          text="Comprar"
+          primary />
+      </transition>
     </div>
   </div>
 </template>
@@ -20,10 +27,10 @@
 <script>
   import { mapActions } from 'vuex'
   import * as types from '../store/types'
-  import ButtonFilled from './ButtonFilled'
+  import FormButton from './FormButton'
 
   export default {
-    components: { ButtonFilled },
+    components: { FormButton },
     props: {
       active: {
         type: Boolean,
@@ -40,6 +47,7 @@
 
 <style lang="stylus">
   @import '../assets/styles/helpers'
+  @import '../assets/styles/transitions'
 
   .shop-boot
     centralize(block)
@@ -48,9 +56,15 @@
     height: 430px
     padding-right: 45px
     padding-left: @padding-right
+    border: 1px solid transparent
+    transition: border-color .5s
+
+    @media screen and (min-width: 630px)
+      margin-right: 0
+      margin-left: @margin-right
 
     &.active
-      border: 1px solid #ccc
+      border-color: #ccc
 
       & > .boot-details > .boot-heading
         margin-top: 0
@@ -66,6 +80,7 @@
     font-weight: 600
     color: #666
     text-transform: uppercase
+    transition: margin-top .5s
 
     & > .icon
       margin-right: 5px

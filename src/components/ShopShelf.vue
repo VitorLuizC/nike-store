@@ -2,7 +2,7 @@
   <section class="shop-shelf">
     <h3 class="title">{{ title }}</h3>
     <carousel
-      :perPageCustom="[[1280, 4], [768, 3], [544, 2], [0, 1]]"
+      :perPageCustom="[[1310, 4], [900, 3], [630, 2], [0, 1]]"
       :paginationSize="10"
       :paginationPadding="5"
       paginationColor="#d1d1d1"
@@ -43,7 +43,9 @@
   @import '../assets/styles/helpers'
 
   .shop-shelf
-    width: 100%
+    width: calc(100% - 20px)
+    margin-right: 10px
+    margin-left: 10px
 
     @media screen and (min-width: 1050px)
       centralize(block) // overwrite margins
@@ -56,5 +58,4 @@
       font-size: 16px
       font-weight: 600
       color: #000
-
 </style>

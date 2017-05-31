@@ -42,7 +42,8 @@
       align-items: center
       justify-content: space-around
       flex-direction: column
-      width: 100%
+      width: calc(100% + 20px)
+      margin-left: -10px
       height: 'calc(75vh - %s)' % @top
       background-color: #fff
       box-shadow: 0 5px 8px -2px rgba(#000, .25);

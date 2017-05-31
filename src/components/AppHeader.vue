@@ -22,10 +22,10 @@
     position: relative
     box-sizing: border-box
     display: flex
-    width: 100%
+    width: calc(100% - 20px)
     height: 72px
-    padding-right: 10px
-    padding-left: @padding-right
+    margin-right: 10px
+    margin-left: @margin-right
     background-color: #fff
 
     @media screen and (min-width: 1050px)

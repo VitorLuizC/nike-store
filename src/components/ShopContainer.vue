@@ -1,7 +1,8 @@
 <template>
   <main>
-    <shop-shelf title="Lançamentos" :boots="releases"></shop-shelf>
+    <shop-filter></shop-filter>
     <shop-shelf title="Mais Vendidos" :boots="bestSellers"></shop-shelf>
+    <shop-shelf title="Lançamentos" :boots="releases"></shop-shelf>
   </main>
 </template>
 
@@ -9,9 +10,10 @@
   import { mapGetters } from 'vuex'
   import * as types from '../store/types'
   import ShopShelf from './ShopShelf'
+  import ShopFilter from './ShopFilter'
 
   export default {
-    components: { ShopShelf },
+    components: { ShopShelf, ShopFilter },
     computed: mapGetters({
       releases: types.BOOTS_RELEASES,
       bestSellers: types.BOOTS_BEST_SELLERS
