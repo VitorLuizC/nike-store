@@ -16,10 +16,22 @@
 </script>
 
 <style lang="stylus">
+  @import '../assets/styles/helpers'
+
   .app-header
+    position: relative
     display: flex
     height: 72px
+    padding-right: 10px
+    padding-left: @padding-right
     background-color: #fff
+
+    @media screen and (min-width: 1050px)
+      centralize(block) // overwrite margins
+      width: 1024px
+
+    @media screen and (min-width: 1310px)
+      width: 1280px
 
     & > .logo
       display: block
@@ -31,7 +43,13 @@
     & > .app-menu
       margin-top: 38px
       margin-left: 40px
-    
+
+      @media screen and (max-width: (768px - 1px))
+        order: -1
+        margin-top: 28px
+        margin-left: 0
+        margin-right: 20px
+
     & > .shop-cart
       margin-top: 23px
       margin-left: auto
