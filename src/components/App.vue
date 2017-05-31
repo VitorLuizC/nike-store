@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <app-header />
+    <app-banner />
     <shop-container />
     <app-footer />
   </div>
@@ -8,11 +9,12 @@
 
 <script>
   import AppHeader from './AppHeader'
+  import AppBanner from './AppBanner'
   import AppFooter from './AppFooter'
   import ShopContainer from './ShopContainer'
 
   export default {
-    components: { AppHeader, AppFooter, ShopContainer }
+    components: { AppHeader, AppBanner, AppFooter, ShopContainer }
   }
 </script>
 
