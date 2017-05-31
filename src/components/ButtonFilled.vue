@@ -26,8 +26,14 @@
     justify-content: center
     width: 166px
     height: 46px
+    padding: 0
+    border: 0 none transparent
+    border-radius: 4px
+    outline: @border
     font-family: 'Roboto', sans-serif
+    font-weight: 600
     font-size: 13px
+    color: #fff
     text-transform: uppercase
     background-color: #313131
 

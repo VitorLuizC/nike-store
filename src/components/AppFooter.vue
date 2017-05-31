@@ -7,6 +7,7 @@
 <style lang="stylus">
   .app-footer
     overflow: hidden
+    width: 100%
     height: 60px
     background-color: #fff
 

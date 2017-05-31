@@ -20,7 +20,9 @@
 
   .app-header
     position: relative
+    box-sizing: border-box
     display: flex
+    width: 100%
     height: 72px
     padding-right: 10px
     padding-left: @padding-right

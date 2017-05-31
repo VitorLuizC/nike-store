@@ -5,6 +5,15 @@ import store from './store'
 
 Vue.use(Carousel)
 
+Vue.filter('real', value => {
+  const moneyFormat = Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 3
+  })
+
+  return moneyFormat.format(value)
+})
+
 new Vue({
   el: '#app',
   store,

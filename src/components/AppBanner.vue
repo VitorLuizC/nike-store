@@ -23,7 +23,6 @@
     max-height: @min-height
     background-color: #ff5e2d
     scroll-behavior: smooth
-    z-index: -1
 
   .banner-container
     & > .image
