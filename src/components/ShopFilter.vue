@@ -87,6 +87,10 @@
     margin-left: 10px
     padding-bottom: 12px
     border-bottom: 1px solid #ccc
+    flex-direction: column
+
+    @media screen and (min-width: 930px)
+      flex-direction: row
 
     @media screen and (min-width: 1050px)
       centralize(block) // overwrite margins
@@ -101,11 +105,28 @@
       color: #010101
 
     & > .button
-      margin-left: auto
+      @media screen and (min-width: 930px)
+        margin-left: auto
 
     & > .filters
       display: flex
-      justify-content: space-between
-      width: 585px
-      margin-left: 30px
+      justify-content: space-around
+      flex-direction: column
+      height: 150px
+      margin-bottom: 15px
+
+      @media screen and (min-width: 530px)
+        justify-content: space-between
+        flex-direction: row
+        width: 100%
+        height: auto
+
+      @media screen and (min-width: 930px)
+        width: 520px
+        margin-left: 10px
+        margin-bottom: 0
+
+      @media screen and (min-width: 1050px)
+        width: 585px
+        margin-left: 30px
 </style>
