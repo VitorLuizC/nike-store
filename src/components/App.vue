@@ -1,20 +1,28 @@
 <template>
   <div class="app">
     <app-header />
-    <app-banner background="#ff5e2d" />
+    <app-banner-header />
     <shop-container />
+    <app-banner-footer />
     <app-footer />
   </div>
 </template>
 
 <script>
   import AppHeader from './AppHeader'
-  import AppBanner from './AppBanner'
+  import AppBannerHeader from './AppBannerHeader'
+  import AppBannerFooter from './AppBannerFooter'
   import AppFooter from './AppFooter'
   import ShopContainer from './ShopContainer'
 
   export default {
-    components: { AppHeader, AppBanner, AppFooter, ShopContainer }
+    components: {
+      AppHeader,
+      AppBannerHeader,
+      ShopContainer,
+      AppBannerFooter,
+      AppFooter,
+    }
   }
 </script>
 

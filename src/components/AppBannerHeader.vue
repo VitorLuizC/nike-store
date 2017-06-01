@@ -1,41 +1,29 @@
 <template>
-  <parallax
-    :speedFactor=".35"
-    sectionClass="app-banner"
-    containerClass="banner-container"
-    :style="{ 'background-color': background }">
-    <img class="image" src="~../assets/images/banner.png" alt="Finish it!" title="Nike: Finish it!" />
-  </parallax>
+  <parallax-container class="app-banner-header" background="#ff5e2d">
+    <img
+      class="banner-image"
+      src="~../assets/images/banner-header.png"
+      alt="Finish it!"
+      title="Nike: Finish it!" />
+  </parallax-container>
 </template>
 
 <script>
-  import Parallax from 'vue-parallaxy'
+  import ParallaxContainer from './ParallaxContainer'
 
   export default {
-    components: { Parallax },
-    props: {
-      background: {
-        type: String,
-        default: null
-      }
-    }
+    components: { ParallaxContainer }
   }
 </script>
 
 <style lang="stylus">
   @import '../assets/styles/helpers'
 
-  .app-banner
-    position: relative
-    overflow: hidden
-    width: 100%
+  .app-banner-header
     min-height: 551px
     max-height: @min-height
-    //background-color: #ff5e2d
-    scroll-behavior: smooth
 
-  .banner-container
-    & > .image
+    .banner-image
       centralize(block)
       display: block
       transform: translateX(-510px) scale(.5)
