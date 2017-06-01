@@ -61,13 +61,18 @@ export const actions = {
   [types.BOOTS_FILTER]({ commit, getters }, payload) {
     const boots = getters[types.BOOTS]
 
-    commit(BOOTS_FILTRED_CHANGE, boots.filter(boot => {
-      if (!Array.isArray(payload) || payload.length === 0)
-        return true;
+    const applyFilter = (boot, filter) => {
+      if (!filter.active)
+        return true
+      return filter.filter(boot)
+    }
 
-      Object.keys(payload).every(key => {
-        boot[key] === payload[key]
+    const applyFilters = (boots, filters) => boots.filter(boot => {
+      return (Array.isArray(filters) ? filters : []).every(filter => {
+        return applyFilter(boot, filter)
       })
-    }))
+    })
+
+    commit(types.BOOTS_FILTRED_CHANGE, applyFilters(boots, payload))
   }
 }

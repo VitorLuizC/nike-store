@@ -1,7 +1,11 @@
 <template>
   <div class="form-checkbox">
-    <input v-model="checked" :id="id" class="input" type="checkbox">
-    <label :for="id" class="checkbox" :class="{ 'active': checked }"  />
+    <input
+      v-model="checked"
+      :id="id"
+      class="input"
+      type="checkbox" />
+    <label class="checkbox" :class="{ 'active': checked }" />
     <p class="text">{{ text }}</p>
   </div>
 </template>
@@ -13,7 +17,7 @@
     props: {
       checked: {
         type: Boolean,
-        required: true
+        required: false
       },
       text: {
         type: String,
@@ -31,6 +35,7 @@
 <style lang="stylus">
   .form-checkbox
     display: flex
+    cursor: pointer
 
     & > .input
       display: none

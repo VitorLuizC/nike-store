@@ -2,12 +2,14 @@
   <div class="shop-filter">
     <h3 class="title">Chuteiras HyperVenom:</h3>
     <div class="filters">
-      <form-checkbox text="Cano alto"></form-checkbox>
-      <form-checkbox text="Cano baixo"></form-checkbox>
-      <form-checkbox text="Futebol Campo"></form-checkbox>
-      <form-checkbox text="Futebol Society"></form-checkbox>
+      <form-checkbox
+        v-for="(filter, index) in filters"
+        :key="index"
+        :checked="filter.active"
+        :text="filter.name"
+        @click.native="applyFilter(filter)" />
     </div>
-    <form-button class="button" text="Todos os Produtos"></form-button>
+    <form-button @click.native="disableAllFilters" class="button" text="Todos os Produtos"></form-button>
   </div>
 </template>
 
@@ -17,7 +19,60 @@
   import FormButton from './FormButton'
 
   export default {
-    components: { FormButton, FormCheckbox }
+    components: { FormButton, FormCheckbox },
+    data() {
+      return {
+        filters: [
+          {
+            name: 'Cano alto',
+            active: false,
+            disable: 'Cano baixo',
+            filter: boot => boot.highTop
+          },
+          {
+            name: 'Cano baixo',
+            active: false,
+            disable: 'Cano alto',
+            filter: boot => !boot.highTop
+          },
+          {
+            name: 'Futebol Campo',
+            active: false,
+            disable: 'Futebol Society',
+            filter: boot => boot.category === 'soccer'
+          },
+          {
+            name: 'Futebol Society',
+            active: false,
+            disable: 'Futebol Campo',
+            filter: boot => boot.category === 'indor soccer'
+          }
+        ]
+      }
+    },
+    methods: {
+      disableFiltersByNames(names) {
+        const disableFilterByName = name => {
+          const filter = this.filters.find(filter => filter.name === name)
+
+          if (filter)
+            filter.active = false
+        }
+
+        (Array.isArray(names) ? names : [names]).forEach(disableFilterByName)
+      },
+      applyFilter(filter) {
+        filter.active = !filter.active
+
+        if (filter.disable)
+          this.disableFiltersByNames(filter.disable)
+
+        this.$store.dispatch(types.BOOTS_FILTER, this.filters)
+      },
+      disableAllFilters() {
+        this.disableFiltersByNames(this.filters.map(filter => filter.name))
+      }
+    }
   }
 </script>
 
