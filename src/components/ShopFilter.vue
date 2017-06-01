@@ -66,11 +66,11 @@
 
         if (filter.disable)
           this.disableFiltersByNames(filter.disable)
-
         this.$store.dispatch(types.BOOTS_FILTER, this.filters)
       },
       disableAllFilters() {
         this.disableFiltersByNames(this.filters.map(filter => filter.name))
+        this.$store.dispatch(types.BOOTS_FILTER, this.filters)
       }
     }
   }
@@ -101,7 +101,7 @@
 
     & > .title
       font-size: 18px
-      font-weight: 600
+      font-weight: 700
       color: #010101
 
     & > .button

@@ -1,7 +1,7 @@
 <template>
   <div class="shop-boot" :class="{ 'active': active }">
     <figure class="boot-image">
-      <img class="image" :src="boot.image" :alt="boot.name" />
+      <img class="image" :src="boot.image" :alt="boot.name" :title="boot.name" />
     </figure>
     <div class="boot-details">
       <p class="boot-heading">
@@ -58,6 +58,7 @@
     padding-left: @padding-right
     border: 1px solid transparent
     transition: border-color .5s
+    cursor: pointer
 
     @media screen and (min-width: 630px)
       margin-right: 0
@@ -77,7 +78,7 @@
     padding-bottom: 4px
     border-bottom: 1px solid #e2e2e2
     font-size: 12px
-    font-weight: 600
+    font-weight: 700
     color: #666
     text-transform: uppercase
     transition: margin-top .5s
@@ -96,7 +97,7 @@
       color: #666
 
     & > .name
-      font-weight: 600
+      font-weight: 700
       color: #010101
 
     & > .type
@@ -104,7 +105,7 @@
 
     & > .price
       font-size: 16px
-      font-weight: 600
+      font-weight: 700
 
   .boot-button
     centralize(block)

@@ -61,7 +61,7 @@
     & > .link
       display: block
       margin: 12px
-      font-weight: 600
+      font-weight: 700
       color: #000
       text-decoration: none
       text-transform: uppercase

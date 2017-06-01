@@ -3,7 +3,7 @@ const getPlugins = require('./getPlugins')
 const getLoaders = require('./getLoaders')
 
 /**
- * Returns webpack configuration object for both 'production' and 'development' 
+ * Returns webpack configuration object for both 'production' and 'development'
  * environments.
  * @param {('development'|'production')} env
  * @returns {webpack.Configuration}
@@ -13,7 +13,8 @@ function getWebpackConfiguration(env) {
 
   const configuration = {
     entry: {
-      main: './src/index.js'
+      main: './src/index.js',
+      vendors: ['babel-polyfill']
     },
     output: {
       path: path.resolve(__dirname, '../dist'),

@@ -24,3 +24,24 @@
     }
   }
 </script>
+
+<style lang="stylus">
+  .cart-icon
+    position: relative
+    cursor: pointer
+
+    & > .counter
+      position: absolute
+      right: -3px
+      bottom: @right
+      display: block
+      width: 25px
+      height: @width
+      line-height: @width
+      font-weight: 700
+      color: #fff
+      text-align: center
+      background-color: #ff5e2d
+      border-radius: 50%
+</style>
+

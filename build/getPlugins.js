@@ -25,7 +25,7 @@ function getPlugins(env) {
     removeStyleLinkTypeAttributes: true
   }
 
-  const plugins = [
+  let plugins = [
     new ExtractTextPlugin('css/style.css'),
     new HtmlPlugin({
       filename: 'index.html',
@@ -35,11 +35,15 @@ function getPlugins(env) {
   ]
 
   if (isProd) {
-    plugins.concat([
+    plugins = plugins.concat([
       new DefinePlugin({
         'process.env': {
           NODE_ENV: '"production"'
         }
+      }),
+      new CommonsChunkPlugin({
+        name: 'vendors',
+        minChunks: 2
       }),
       new UglifyJsPlugin()
     ])

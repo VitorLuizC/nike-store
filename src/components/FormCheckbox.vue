@@ -45,7 +45,7 @@
       margin-left: 10px
       margin-bottom: 3px
       font-size: 16px
-      font-weight: 600
+      font-weight: 700
       color: #999
 
     & > .checkbox
