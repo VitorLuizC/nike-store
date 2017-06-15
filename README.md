@@ -1,5 +1,7 @@
 # Nike Store
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/VitorLuizC/nike-store.svg)](https://greenkeeper.io/)
+
 ## Instalação
 
 Usando um _Node package manager_, instale as dependências.
